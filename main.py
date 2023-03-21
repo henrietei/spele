@@ -1,5 +1,10 @@
 import pygame as pg
 
+# Initializing Color
+color1 = (255,255,255)
+ 
+# Drawing Rectangle
+
 
 def main():
     screen = pg.display.set_mode((640, 480))
@@ -12,6 +17,10 @@ def main():
     active = False
     text = ''
     done = False
+    pg.draw.rect(screen, color1, pg.Rect(30, 30, 60, 60))
+    #pg.display.flip()
+    
+
 
     while not done:
         for event in pg.event.get():
@@ -31,12 +40,13 @@ def main():
                     if event.key == pg.K_RETURN:
                         print(text)
                         text = ''
+                        pg.draw.rect(screen, color1, pg.Rect(30, 30, 60, 60))
                     elif event.key == pg.K_BACKSPACE:
                         text = text[:-1]
                     else:
                         text += event.unicode
 
-        screen.fill((30, 30, 30))
+        screen.fill((222, 220, 220))
         # Render the current text.
         txt_surface = font.render(text, True, color)
         # Resize the box if the text is too long.
@@ -46,6 +56,7 @@ def main():
         screen.blit(txt_surface, (input_box.x+5, input_box.y+5))
         # Blit the input_box rect.
         pg.draw.rect(screen, color, input_box, 2)
+        
 
         pg.display.flip()
         clock.tick(30)
@@ -54,6 +65,6 @@ def main():
 if __name__ == '__main__':
     pg.init()
     main()
+
     pg.quit()
 
-print(text)
