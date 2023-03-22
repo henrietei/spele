@@ -1,23 +1,27 @@
 import pygame as pg
+#from pygame .locals import * 
 
 # Initializing Color
-color1 = (255,255,255)
+red = (255,0,0)
+green = (0, 255, 0)
+blue = (0,0,255)
  
 # Drawing Rectangle
 
 
 def main():
-    screen = pg.display.set_mode((640, 480))
-    font = pg.font.Font(None, 32)
+    screen = pg.display.set_mode((480, 720))
+    #screen.draw.text("hello world", (20, 100))
+    font = pg.font.Font(None, 100)
     clock = pg.time.Clock()
-    input_box = pg.Rect(100, 100, 140, 32)
+    input_box = pg.Rect(90,540,300,90)
     color_inactive = pg.Color('lightskyblue3')
     color_active = pg.Color('dodgerblue2')
     color = color_inactive
     active = False
     text = ''
     done = False
-    pg.draw.rect(screen, color1, pg.Rect(30, 30, 60, 60))
+    #pg.draw.rect(screen, color1, pg.Rect(30, 30, 60, 60))
     #pg.display.flip()
     
 
@@ -40,7 +44,7 @@ def main():
                     if event.key == pg.K_RETURN:
                         print(text)
                         text = ''
-                        pg.draw.rect(screen, color1, pg.Rect(30, 30, 60, 60))
+                        
                     elif event.key == pg.K_BACKSPACE:
                         text = text[:-1]
                     else:
@@ -49,13 +53,22 @@ def main():
         screen.fill((222, 220, 220))
         # Render the current text.
         txt_surface = font.render(text, True, color)
+        #screen.draw.text("hello\nworld", bottomright=(500, 400), align="left")
+        #txt_surface = font.render("text", True, color)
         # Resize the box if the text is too long.
-        width = max(200, txt_surface.get_width()+10)
+        #width = max(200, txt_surface.get_width()+10)
+        width=300
+        height=90
         input_box.w = width
+        input_box.h = height
         # Blit the text.
         screen.blit(txt_surface, (input_box.x+5, input_box.y+5))
         # Blit the input_box rect.
         pg.draw.rect(screen, color, input_box, 2)
+        pg.draw.rect(screen, red, pg.Rect(30, 30, 60, 60))
+        #txt_surface = font.render("text", True, color)
+        
+
         
 
         pg.display.flip()
