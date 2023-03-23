@@ -5,16 +5,19 @@ import pygame as pg
 red = (255,0,0)
 green = (0, 255, 0)
 blue = (0,0,255)
- 
+black = (0,0,0)
+
+
 # Drawing Rectangle
 
 
 def main():
+    
     screen = pg.display.set_mode((480, 720))
     #screen.draw.text("hello world", (20, 100))
     font = pg.font.Font(None, 100)
     clock = pg.time.Clock()
-    input_box = pg.Rect(90,540,300,90)
+    input_box = pg.Rect(90,90,300,90)
     color_inactive = pg.Color('lightskyblue3')
     color_active = pg.Color('dodgerblue2')
     color = color_inactive
@@ -50,7 +53,7 @@ def main():
                     else:
                         text += event.unicode
 
-        screen.fill((222, 220, 220))
+        screen.fill((230, 230, 230))
         # Render the current text.
         txt_surface = font.render(text, True, color)
         #screen.draw.text("hello\nworld", bottomright=(500, 400), align="left")
@@ -64,9 +67,18 @@ def main():
         # Blit the text.
         screen.blit(txt_surface, (input_box.x+5, input_box.y+5))
         # Blit the input_box rect.
-        pg.draw.rect(screen, color, input_box, 2)
-        pg.draw.rect(screen, red, pg.Rect(30, 30, 60, 60))
+        #pg.draw.rect(screen, color, input_box, 2)
+        #pg.draw.rect(screen, red, pg.Rect(30, 30, 60, 60))
+
         #txt_surface = font.render("text", True, color)
+        l_x=90
+        l_y=90
+        pg.draw.line(screen, black, (88, l_y), (393, l_y), width=6)
+        for i in range (6):
+            pg.draw.line(screen, black, (l_x, 90), (l_x, 630), width=6)
+            l_y=l_y+90
+            pg.draw.line(screen, black, (88, l_y), (393, l_y), width=6)
+            l_x= l_x+60
         
 
         
